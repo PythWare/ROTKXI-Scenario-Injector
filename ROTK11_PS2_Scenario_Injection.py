@@ -79,10 +79,10 @@ class ROTK11PS2():
                 injection_data = f2.read()
                 f1.write(injection_data)
         except FileNotFoundError:
-            self.util_caller.log_error(self.ERROR_LOG_FILE, f"The file {main_file} does not exist.", "func_name=file_handling_protocol")
+            self.util_caller.log_error(self.ERROR_LOG_FILE, f"The file {main_file} does not exist or the iso file was not renamed to 'ROTKXI.iso'.", func_name="file_handling_protocol")
             sys.exit(1)
         except PermissionError:
-            self.util_caller.log_error(self.ERROR_LOG_FILE, f"Permission denied for file {main_file}.", "func_name=file_handling_protocol")
+            self.util_caller.log_error(self.ERROR_LOG_FILE, f"Permission denied for file {main_file}.", func_name="file_handling_protocol")
             sys.exit(1)
         except IOError as e:
             self.util_caller.log_error(self.ERROR_LOG_FILE, f"An I/O error occurred. Details: {e}", func_name="file_handling_protocol", container=main_file)
